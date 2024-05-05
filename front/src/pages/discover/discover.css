@@ -1,0 +1,397 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+.discover {
+  --accent: rgb(240, 240, 250);
+  --left: rgb(220, 220, 230);
+  --right: rgb(230, 230, 240);
+  --background: rgb(200, 200, 210);
+
+  --primaryText: rgb(20, 20, 30);
+  --secondaryText: rgb(150, 150, 160);
+  --terciaryText: rgb(255, 255, 255);
+
+  --fuchsia: rgb(255, 36, 101);
+  --grass: rgb(29, 194, 158);
+  --mandarina: rgb(240, 154, 26);
+  --ultra: rgb(82, 4, 251);
+  --logout-button-background: rgba(4, 111, 251, 1);
+  --logout-button-transparent: rgba(4, 111, 251, 0.5);
+
+  transition: all 0.5s cubic-bezier(0.19, 0.76, 0.33, 0.98);
+
+  user-select: none;
+
+  ::placeholder {
+    color: var(--secondaryText);
+  }
+
+  ::-webkit-scrollbar {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--background);
+    border-radius: 2vmin;
+    border: 0.5vmin solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-track {
+    margin-bottom: 2vmin;
+  }
+
+  .appWrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding: 4vmin;
+    box-sizing: border-box;
+    background: var(--background);
+  }
+
+  .contentWrapper {
+    border-radius: 3vmin;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 0px 4vmin rgb(0, 0, 0, 0.6);
+    background: var(--right);
+  }
+
+  .content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+  }
+
+  .left {
+    background: var(--left);
+    height: 100%;
+    width: 14%;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    .logoutButton {
+      background: var(--logout-button-background);
+      width: 28vmin;
+      height: 6vmin;
+      display: flex;
+      max-width: 100%;
+      justify-content: center;
+      align-items: center;
+      color: var(--terciaryText);
+      align-self: flex-end;
+      border-radius: 2vmin;
+      margin: 0 2vmin 2vmin 2vmin;
+      text-wrap: nowrap;
+    }
+  }
+  .leftClosed {
+    width: 0%;
+  }
+
+  .right {
+    background: var(--right);
+    height: 100%;
+    flex: 1;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    .top {
+      position: relative;
+      width: 100%;
+      height: 8vmin;
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 2vmin;
+      .searchBar {
+        flex: 1;
+        height: 5vmin;
+        background: var(--left);
+        border-radius: 4vmin;
+        margin: 0 2vmin 0 2vmin;
+        color: var(--primaryText);
+        border: none;
+        box-sizing: border-box;
+        padding: 0 2vmin;
+        outline: none;
+        font-size: 2vmin;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .collapseButton {
+    background: var(--left);
+    width: 5vmin;
+    height: 5vmin;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 1vmin solid transparent;
+    .collapseImage {
+      width: 50%;
+      height: 50%;
+      /* transform: rotateY(180deg) translateX(6%); */
+    }
+    /* .rotated {
+      transform: rotateY(0deg) translateX(6%);
+    } */
+  }
+  .collapseButton:hover {
+    outline-color: var(--background);
+    outline-width: 0.5vmin;
+  }
+  .collapseButton:active {
+    outline-width: 1.1vmin;
+  }
+
+  .cardContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding-left: 2vmin;
+    padding-right: 2vmin;
+    padding-bottom: 2vmin;
+    overflow-y: auto;
+  }
+
+  .cardRow {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    flex-shrink: 0;
+    height: fit-content;
+    box-sizing: border-box;
+    height: calc(50% - 1vmin);
+    overflow: visible;
+  }
+
+  .card {
+    position: relative;
+    cursor: pointer;
+    height: 100%;
+    flex: 0 1 100%;
+    background: var(--left);
+    color: var(--primaryText);
+    padding: 2vmin;
+    border-radius: 2vmin;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    .text {
+      height: 20%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      .name {
+        font-size: 3vmin;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+      }
+      .location {
+        font-size: 2vmin;
+        color: var(--secondaryText);
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    .thumbnail {
+      background: var(--background);
+      border-radius: 1vmin;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+      flex-direction: column;
+      .image {
+        position: relative;
+        min-width: 100%;
+        object-fit: cover;
+      }
+    }
+    .tags {
+      flex: 0 0 4vmin;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      box-sizing: border-box;
+      padding-top: 1vmin;
+      flex-wrap: wrap;
+      .tag {
+        background: var(--data);
+        height: 3vmin;
+        max-height: 100%;
+        width: fit-content;
+        box-sizing: border-box;
+        padding: 0 1vmin;
+        min-width: 8vmin;
+        color: var(--terciaryText);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5vmin;
+        font-size: 1.8vmin;
+        margin-right: 1vmin;
+      }
+    }
+  }
+
+  .userBar {
+    background: var(--left);
+    width: 5vmin;
+    height: 5vmin;
+    border-radius: 4vmin;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+    .userButton {
+      aspect-ratio: 1/1;
+      height: 100%;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .userButton:hover {
+      .userAvatar {
+        min-width: 120%;
+      }
+    }
+    .userAvatar {
+      min-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      transition: min-width 0.2s cubic-bezier(0.19, 0.76, 0.33, 0.98);
+    }
+    .userOptions {
+      height: 100%;
+      flex: 1;
+      flex-direction: row;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      .userLink {
+        color: var(--primaryText);
+        text-overflow: clip;
+        text-wrap: nowrap;
+        width: fit-content;
+        font-size: 2vmin;
+        background: var(--right);
+        border-radius: 2vmin;
+        box-sizing: border-box;
+        padding: 0.4vmin 2vmin;
+        outline: 1vmin solid transparent;
+      }
+      .userLink:hover {
+        outline-color: var(--background);
+        outline-width: 0.5vmin;
+      }
+      .userLink:active {
+        outline-width: 1.1vmin;
+      }
+      .logoutLink {
+        background: var(--logout-button-background);
+      }
+      .logoutLink:hover {
+        outline-color: var(--logout-button-transparent);
+        outline-width: 0.5vmin;
+      }
+      .userLink:active {
+        outline-width: 1.1vmin;
+      }
+    }
+  }
+  .userBarCollapsed {
+    width: 50vmin;
+  }
+
+  .filterWrapper {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 2vmin 4vmin;
+    display: flex;
+    flex-direction: column;
+    text-wrap: nowrap;
+    color: var(--primaryText);
+    .title {
+      font-size: 3vmin;
+      height: fit-content;
+    }
+    .tagContainer {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2vmin;
+      .tagFilter {
+        font-size: 2vmin;
+        display: flex;
+        align-items: center;
+        height: 5vmin;
+        cursor: pointer;
+      }
+      .tagFilter input {
+        min-width: 2vmin;
+        min-height: 2vmin;
+        display: block;
+        margin-right: 2vmin;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .card:hover {
+    .thumbnail {
+      .image {
+        transform: scale(105%);
+        opacity: 0.75;
+      }
+    }
+  }
+  .card + .card {
+    margin-left: 2vmin;
+  }
+  .cardRow + .cardRow {
+    margin-top: 2vmin;
+  }
+
+  .emptySearch {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--secondaryText);
+    font-size: 2vmin;
+    .image {
+      height: 8vmin;
+    }
+  }
+}
+
+.dark {
+  --accent: rgb(65, 65, 75);
+  --left: rgb(45, 45, 55);
+  --right: rgb(55, 55, 65);
+  --background: rgb(35, 35, 45);
+
+  --primaryText: rgb(235, 235, 235);
+  --secondaryText: rgb(150, 150, 160);
+  .collapseButton {
+    .collapseImage {
+      filter: invert(1);
+    }
+  }
+}

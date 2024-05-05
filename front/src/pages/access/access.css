@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+.access {
+  --primary: rgb(255, 255, 255);
+  --space: rgb(1, 2, 40);
+
+  --login-box-width: 50vmin;
+  --login-box-background: rgb(255, 255, 255);
+  --login-box-padding: 2vmin;
+  --login-box-field-background: rgba(230, 230, 240, 1);
+  --login-box-field-background-focused: rgb(188, 216, 255);
+  --signup-box-field-background-focused: rgb(255, 228, 188);
+  --login-box-field-radius: 2vmin;
+  --login-box-field-padding: 2vmin;
+  --login-button-background: rgba(4, 111, 251, 1);
+  --signup-button-background: rgba(251, 132, 4, 1);
+
+  --planet-dimensions: 150vmin;
+  --planet-background: #38c7ff;
+  --planet-glow-radius: 20vmin;
+  --planet-glow: rgba(4, 111, 251, 0.6);
+
+  --ditherOpacity: 0.1;
+  --ditherSize: 0.1vmin 0.1vmin;
+
+  --regular: 2vmin;
+  --large: 4vmin;
+
+  .accessWrapper {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.5s;
+    user-select: none;
+  }
+
+  .loginBox {
+    position: absolute;
+    width: var(--login-box-width);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    --focusedColor: var(--login-box-field-background-focused);
+    .accessButton {
+      background: var(--login-button-background);
+    }
+    .prompt {
+      --promptColor: var(--login-button-background);
+    }
+  }
+
+  .signUpBox {
+    position: absolute;
+    width: var(--login-box-width);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    --focusedColor: var(--signup-box-field-background-focused);
+    .accessButton {
+      background: var(--signup-button-background);
+    }
+    .prompt {
+      --promptColor: var(--signup-button-background);
+    }
+  }
+
+  .promptWrapper {
+    margin-top: 2vmin;
+    display: flex;
+    justify-content: center;
+  }
+
+  .prompt {
+    text-align: center;
+    font-size: var(--regular);
+    color: white;
+  }
+
+  .accessButton {
+    letter-spacing: 0.08em;
+    font-weight: bold;
+    font-size: var(--regular);
+    color: white;
+    border-radius: 2vmin;
+    height: 8vmin;
+    width: 100%;
+  }
+
+  .inputField {
+    margin-bottom: 2vmin;
+    height: 6vmin;
+    width: 100%;
+    border-radius: 2vmin;
+    box-sizing: border-box;
+    padding: 2vmin;
+    font-size: var(--regular);
+    transition: all 0.5s;
+  }
+
+  .inputField:focus {
+    background: var(--focusedColor);
+  }
+
+  .title {
+    font-size: var(--large);
+    color: white;
+    text-align: center;
+    letter-spacing: 0.4em;
+    margin-bottom: 2vmin;
+    font-weight: bold;
+  }
+
+  .background {
+    width: 100%;
+    height: 100%;
+    background: var(--space);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    position: absolute;
+  }
+
+  .planetWrapper {
+    transform-origin: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    transform: translateX(50%);
+    transition: transform 0.5s;
+  }
+
+  .planet {
+    aspect-ratio: 1/1;
+    width: var(--planet-dimensions);
+    border-radius: 50%;
+    background: var(--planet-background);
+    position: relative;
+    box-shadow: 0px 0px var(--planet-glow-radius) 5vmin var(--planet-glow),
+      0px 0px 8vmin 5vmin rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .planetShadow {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0px 0px 5vmin 1vmin rgba(206, 241, 255, 0.7) inset;
+    background: -webkit-radial-gradient(var(--space) 35%, transparent 200%);
+    height: 100%;
+    width: 100%;
+    opacity: 96%;
+  }
+
+  .planetShadow::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent 0%,
+      transparent 1%,
+      #000 1%,
+      #000 2%
+    );
+    background-size: var(--ditherSize);
+    opacity: var(--ditherOpacity);
+    background-blend-mode: multiply;
+  }
+
+  .planetShadow::after {
+    background-blend-mode: multiply;
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent 0%,
+      transparent 1%,
+      #000 1%,
+      #000 2%
+    );
+    background-size: var(--ditherSize);
+    opacity: var(--ditherOpacity);
+  }
+
+  .earth {
+    min-width: 150vmin;
+    animation: orbit 640s infinite linear;
+    scale: 280%;
+    transform: translateX(35%);
+  }
+
+  .clouds {
+    position: absolute;
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    animation: clouds 600s infinite linear;
+    opacity: 0.5;
+    filter: drop-shadow(0px -1vmin 2vmin var(--space));
+  }
+
+  .starWrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    width: 0.15vmin;
+    height: 0.15vmin;
+    animation: twinkle var(--duration) infinite;
+  }
+
+  .planetBorder {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border-radius: 50%;
+    outline: 20vmin solid var(--planet-glow);
+    scale: 95%;
+    filter: blur(10vmin);
+  }
+
+  @media (max-width: 1280px) {
+    .accessWrapper {
+      width: 100%;
+    }
+
+    .planetWrapper {
+      transform: translateX(0%) translateY(50%);
+    }
+  }
+}
+
+@keyframes twinkle {
+  0% {
+    width: 0.1vmin;
+    height: 0.1vmin;
+    opacity: 0.9;
+  }
+}
+
+@keyframes orbit {
+  0% {
+    transform: translateX(35%);
+  }
+
+  100% {
+    transform: translateX(-21.65%);
+  }
+} /* Percentage fixed to wrap around */
+
+@keyframes clouds {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}

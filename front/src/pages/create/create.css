@@ -1,0 +1,401 @@
+.create {
+  --accent: rgb(240, 240, 250);
+  --left: rgb(220, 220, 230);
+  --right: rgb(230, 230, 240);
+  --background: rgb(200, 200, 210);
+
+  --primaryText: rgb(20, 20, 30);
+  --secondaryText: rgb(150, 150, 160);
+  --terciaryText: rgb(255, 255, 255);
+
+  --upload: rgba(4, 111, 251, 1);
+  --uploadTransparent: rgba(4, 111, 251, 0.5);
+
+  transition: all 0.5s cubic-bezier(0.19, 0.76, 0.33, 0.98);
+
+  user-select: none;
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(0);
+    cursor: pointer;
+  }
+
+  ::placeholder {
+    color: var(--secondaryText);
+  }
+
+  ::-webkit-scrollbar {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--background);
+    border-radius: 2vmin;
+    border: 0.5vmin solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-track {
+    margin: 2vmin;
+  }
+
+  .appWrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    padding: 4vmin;
+    box-sizing: border-box;
+    background: var(--background);
+  }
+
+  .contentWrapper {
+    border-radius: 3vmin;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0px 0px 4vmin rgb(0, 0, 0, 0.6);
+    background: var(--right);
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .topBar {
+    position: relative;
+    width: 100%;
+    height: 8vmin;
+    display: flex;
+    padding: 0 2vmin;
+    box-sizing: border-box;
+    align-items: center;
+    flex-shrink: 0;
+    .homeButton {
+      background: var(--left);
+      width: 5vmin;
+      height: 5vmin;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      outline: 1vmin solid transparent;
+      .homeImage {
+        background: none;
+        width: 50%;
+        height: 50%;
+        transform: rotateY(180deg) translateX(6%);
+      }
+    }
+    .homeButton:hover {
+      outline-color: var(--background);
+      outline-width: 0.5vmin;
+    }
+    .homeButton:active {
+      outline-width: 1.1vmin;
+    }
+  }
+
+  .createWrapper {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2vmin;
+    color: var(--primaryText);
+    display: flex;
+  }
+
+  .dataArea {
+    height: 100%;
+    width: 50%;
+    flex-shrink: 0;
+    padding: 2vmin;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    .dataWrapper {
+      margin-top: 2vmin;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .dataForm {
+        height: 20%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        .inputField {
+          background: var(--left);
+          color: var(--primaryText);
+          height: 6vmin;
+          width: 49%;
+          border-radius: 4vmin;
+          box-sizing: border-box;
+          padding: 2vmin;
+          font-size: 2vmin;
+        }
+      }
+      .descriptionForm {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        font-size: 2vmin;
+        .inputField {
+          overflow-y: scroll;
+          margin-top: 2vmin;
+          background: var(--left);
+          width: 100%;
+          flex-grow: 1;
+          border-radius: 2vmin;
+          color: var(--primaryText);
+          padding: 2vmin;
+          box-sizing: border-box;
+          resize: none;
+          box-sizing: border-box;
+        }
+      }
+      .tagForm {
+        width: 100%;
+        .tagContainer {
+          height: 8vmin;
+          width: 100%;
+          background: var(--left);
+          margin-top: 2vmin;
+          border-radius: 2vmin;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          overflow-x: auto;
+          box-sizing: border-box;
+          padding: 0 2vmin;
+          .tagFilter {
+            height: 2vmin;
+            flex-shrink: 0;
+            box-sizing: border-box;
+            font-size: 2vmin;
+            padding: 2vmin;
+            border-radius: 2vmin;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: var(--terciaryText);
+          }
+          .tagFilter input {
+            min-height: 2vmin;
+            min-width: 2vmin;
+            display: block;
+            margin-right: 2vmin;
+            cursor: pointer;
+          }
+          .tagFilter + .tagFilter {
+            margin-left: 1vmin;
+          }
+        }
+      }
+    }
+  }
+  .imageArea {
+    height: 100%;
+    flex-grow: 1;
+    padding: 2vmin;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    .imageWrapper {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      background: var(--left);
+      border-radius: 2vmin;
+      margin-top: 2vmin;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .uploadedImage {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .removeButton {
+        position: absolute;
+        opacity: 70%;
+        height: 5vmin;
+        border-radius: 50%;
+        width: 5vmin;
+        background: var(--left);
+        top: 2vmin;
+        right: 2vmin;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: 1vmin solid transparent;
+        .removeIcon {
+          width: 50%;
+          height: 50%;
+        }
+      }
+      .removeButton:hover {
+        outline-color: var(--background);
+        outline-width: 0.5vmin;
+      }
+      .removeButton:active {
+        outline-width: 1.1vmin;
+      }
+      .uploadButton {
+        width: 10vmin;
+        height: 10vmin;
+        background: var(--right);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        outline: 2vmin solid transparent;
+        cursor: pointer;
+        .image {
+          height: 50%;
+          width: 50%;
+        }
+      }
+      .uploadButton:hover {
+        outline-color: var(--background);
+        outline-width: 1vmin;
+      }
+      .uploadButton:active {
+        outline-width: 2.1vmin;
+      }
+    }
+  }
+
+  .title {
+    padding-left: 2vmin;
+    font-size: 4vmin;
+    box-sizing: border-box;
+  }
+
+  .createButtonWrapper {
+    width: 100%;
+    margin-top: 2vmin;
+    display: flex;
+    justify-content: flex-end;
+    overflow: visible;
+    .createButton {
+      height: 8vmin;
+      width: 100%;
+      border-radius: 2vmin;
+      background: var(--upload);
+      font-size: 2vmin;
+      color: white;
+      outline: 2vmin solid transparent;
+    }
+    .createButton:hover {
+      outline-color: var(--uploadTransparent);
+      outline-width: 1vmin;
+    }
+    .createButton:active {
+      outline-width: 2.1vmin;
+    }
+  }
+
+  .loadingScreen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(4vmin);
+    animation: fadeIn 0.5s cubic-bezier(0.19, 0.76, 0.33, 0.98);
+    animation-fill-mode: forwards;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .animatedContainer {
+      animation: scaleIn 0.6s;
+      animation-fill-mode: forwards;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .loadingIcon {
+      width: 8vmin;
+      animation: loadingIcon 0.6s infinite linear;
+    }
+    .text {
+      font-size: 2vmin;
+      color: var(--secondaryText);
+    }
+  }
+}
+
+.dark {
+  --accent: rgb(65, 65, 75);
+  --left: rgb(45, 45, 55);
+  --right: rgb(55, 55, 65);
+  --background: rgb(35, 35, 45);
+
+  --primaryText: rgb(235, 235, 235);
+  --secondaryText: rgb(150, 150, 160);
+  .homeButton {
+    .homeImage {
+      filter: invert(1);
+    }
+  }
+  .removeIcon {
+    filter: invert(1);
+  }
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+.experimental {
+  --accent: #0f0f05;
+  --left: #232319;
+  --right: #19190f;
+  --background: #37372d;
+
+  --primaryText: #ebebe1;
+  --secondaryText: rgb(150, 150, 160);
+
+  --upload: rgb(109, 218, 7);
+  --uploadTransparent: rgba(109, 218, 7, 0.5);
+  .homeButton {
+    .homeImage {
+      filter: invert(1);
+    }
+  }
+  .removeIcon {
+    filter: invert(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    scale: 200%;
+  }
+  100% {
+    scale: 100%;
+  }
+}
+
+@keyframes loadingIcon {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(-180deg);
+  }
+}
